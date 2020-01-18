@@ -17,8 +17,7 @@ set nowrap
 syntax on
 
 " Sets a color scheme that is compatible with the solarized themes
-colorscheme peachpuff 
-" colorscheme zellner 
+colorscheme peachpuff
 
 " Highlight all search matches
 set hlsearch
