@@ -14,7 +14,10 @@ set wildmenu
 set splitbelow splitright
 
 " Disable text wrapping
-set nowrap
+" set nowrap
+
+" Sets wraping at linebreak
+set wrap lbr
 
 " Syntax highlighting
 syntax on
