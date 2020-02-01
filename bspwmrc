@@ -17,5 +17,5 @@ bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 xrandr -s 1920x1080
-feh --bg-center ~/.config/backgrounds/index.html
+feh --bg-center $(ls ~/.config/wallpaper/*.jpg | shuf | sed 1q)
 . ~/.config/panel/panel
