@@ -1,7 +1,9 @@
 #!/bin/sh
-mkdir -p ~/.config/ranger ~/.config/bspwm ~/.config/sxhkd
+mkdir -p ~/.config/ranger ~/.config/bspwm ~/.config/sxhkd ~/.config/dmenu
 
+cp -r app-launcher.sh ~/.config/dmenu
 cp -r bspwmrc ~/.config/bspwm/bspwmrc
+cp -r panel ~/.config/
 cp -r profile ~/.profile
 cp -r rc.conf ~/.config/ranger/rc.conf
 cp -r sxhkdrc ~/.config/sxhkd/sxhkdrc 
