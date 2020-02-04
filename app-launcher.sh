@@ -1,8 +1,7 @@
-var1=$(echo "firefox
-ranger
-vim" | dmenu)
+var1=$(echo "ExampleGuiProgram
+TerminalProgramEx" | dmenu)
 
 case "$var1" in
-	firefox) sh -c $var1 &;;
-	ranger|vim ) st -e $var1 &
+	ExampleGuiProgram) sh -c $var1 &;;
+	TerminalProgramEx) st -e $var1 &
 esac

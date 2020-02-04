@@ -16,6 +16,12 @@ bspc rule -a Chromium desktop='^2'
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
+
+# Set screen resolution
 xrandr -s 1920x1080
+
+# Pick a random picture from the given folder and set as wallpaper
 feh --bg-center $(ls ~/.config/wallpaper/*.jpg | shuf | sed 1q)
+
+# Start the panel script
 . ~/.config/panel/panel

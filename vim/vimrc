@@ -25,3 +25,7 @@ set hlsearch
 
 " Enable the mouse
 set mouse=a
+
+" Set the solarized theme
+colorscheme solarized
+set background=dark
