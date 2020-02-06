@@ -11,3 +11,4 @@ cp -r vim ~/.vim
 cp -r vimrc ~/.vimrc
 cp -r xinitrc ~/.xinitrc
 cp -r zshrc ~/.zshrc
+cp -r launcher ~/.config/

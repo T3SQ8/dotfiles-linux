@@ -56,4 +56,9 @@ super + alt + shift + {Left,Down,Up,Right}
 
 # dmenu application launcher
 super + space
-	~/.config/dmenu/app-launcher.sh
+	~/.config/launcher/launcher.sh
+
+# close and kill
+super + shift + q
+	bspc node -k
+

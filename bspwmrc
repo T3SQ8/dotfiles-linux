@@ -21,7 +21,7 @@ bspc rule -a Screenkey manage=off
 xrandr -s 1920x1080
 
 # Pick a random picture from the given folder and set as wallpaper
-feh --bg-center $(ls ~/.config/wallpaper/*.jpg | shuf | sed 1q)
+feh --bg-fill $(ls ~/.config/wallpaper/*.jpg | shuf | sed 1q)
 
 # Start the panel script
 . ~/.config/panel/panel
