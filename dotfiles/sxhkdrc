@@ -1,0 +1,64 @@
+# terminal emulator
+super + Return
+	st
+
+# make sxhkd reload its configuration files
+super + Escape
+	pkill -USR1 -x sxhkd
+
+# quit/restart bspwm
+super + alt + {q,r}
+	bspc {quit,wm -r}
+
+# alternate between the tiled and monocle layout
+super + f
+	bspc desktop -l next
+
+# swap the current node and the biggest node
+super + g
+	bspc node -s biggest
+
+# set the window state
+super + {t,shift + t,s}
+	bspc node -t {tiled,pseudo_tiled,floating}
+
+# focus the next/previous node in the current desktop
+alt + {_,shift + }Tab
+	bspc node -f {next,prev}.local
+
+# focus the next/previous desktop in the current monitor
+super + {Prior,Next}
+	bspc desktop -f {prev,next}.local
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+# move a floating window
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# pin window
+super + p 
+	bspc node -g sticky
+
+# help
+F1
+	st -e sh -c "bspc node -t floating && cat ~/.config/sxhkd/sxhkdrc | sed -r /^[[:blank:]]+/d .config/sxhkd/sxhkdrc | less" 
+
+# expand a window by moving one of its side outward
+super + alt + {Left,Down,Up,Right}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+super + alt + shift + {Left,Down,Up,Right}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# dmenu application launcher
+super + space
+	~/.config/launcher/launcher.sh
+
+# close and kill
+super + shift + q
+	bspc node -k
+
