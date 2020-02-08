@@ -14,9 +14,6 @@ set wildmenu
 set splitbelow splitright
 
 " Disable text wrapping
-" set nowrap
-
-" Sets wraping at linebreak
 set wrap lbr
 
 " Syntax highlighting
@@ -25,5 +22,20 @@ syntax on
 " Highlight all search matches
 set hlsearch
 
-" Change colorscheme to 'desert'
-colorscheme desert
+" Change colorscheme to solarized
+colorscheme solarized8
+
+" Turn on backspace when in insert mode
+set backspace=indent,eol,start
+
+" Show line and character nummber
+set ruler
+
+" Search case insensitivly
+set ignorecase
+
+" Math in markdown (use pandoc to compile into docx)
+autocmd Filetype markdown inoremap ;1 <Esc>?#<cr>yy<c-o>p$ciw<c-r>=<c-r>"+1<cr><cr>$<++>$<cr><cr><++><Esc>?\$<++>\$<cr>lca<
+autocmd Filetype markdown inoremap ;2 <Esc>?#<cr>yy<c-o>p$ciw<c-r>=<c-r>"+1<cr><cr> a) <cr> b) $<++>$<cr> c) $<++>$<cr><cr><++><Esc>?a)<cr>$A$$<Esc>i
+autocmd Filetype markdown inoremap <tab><tab> <Esc>/<++><cr>"_c4l
+
