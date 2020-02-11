@@ -1,15 +1,14 @@
-option=$(echo "TerminalProgram
-settings
-GuiProgram" | dmenu)
+location=($HOME/.config/launcher/)
+option=$(cat $location/list | dmenu)
 
 settingsoption()
 {
-cd .config/launcher/settings
-sh -c ~/.config/launcher/settings/$(ls | dmenu)
+cd $location/settings
+sh -c $location/settings/$(ls | dmenu)
 }
 
 case "$option" in
 	GuiProgram) sh -c $option &;;
-	TerminalProgram) st -e $option &;;
+	vim|ranger) st -e $option &;;
 	settings) settingsoption&;;
 esac
