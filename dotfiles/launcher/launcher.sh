@@ -1,14 +1,31 @@
-location=($HOME/.config/launcher/)
-option=$(cat $location/list | dmenu)
+option=$(echo "vim
+ranger
+settings" | dmenu)
 
-settingsoption()
+settingsfunc()
 {
-cd $location/settings
-sh -c $location/settings/$(ls | dmenu)
+var1=$(echo "brightness
+screen-resolution" | dmenu)
 }
+
+brightnessfunc()
+{
+xrandr --output $(xrandr -q | grep connected | head -n 1 | cut -d ' ' -f1) --brightness $(echo "set brightness to?: " | dmenu)
+}
+
+screenresfunc()
+{
+xrandr -s $(xrandr | sed s/\ \ \ // | awk '{print$1;}' | grep x | dmenu)
+}
+
 
 case "$option" in
 	GuiProgram) sh -c $option &;;
 	vim|ranger) st -e $option &;;
-	settings) settingsoption&;;
+	settings) settingsfunc ;;
+esac
+
+case "$var1" in
+	brightness) brightnessfunc &;;
+	screen-resolution) screenresfunc &;;
 esac
