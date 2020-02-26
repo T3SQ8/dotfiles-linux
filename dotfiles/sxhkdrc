@@ -15,7 +15,7 @@ F1
 	st -e sh -c "bspc node -t floating && cat ~/.config/sxhkd/sxhkdrc | less" 
 
 # dmenu application launcher
-super + space
+@Super_R
 	~/.config/launcher/launcher.sh
 
 #
@@ -81,3 +81,7 @@ super + ctrl + {1-9}
 # cancel the preselection for the focused node
 super + ctrl + space
 	bspc node -p cancel
+
+# rotate windows
+super + r
+	bspc node @focused:/ -R 90
