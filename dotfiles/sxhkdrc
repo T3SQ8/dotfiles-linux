@@ -1,3 +1,7 @@
+#
+# WM INDEPENDENT HOTKEYS
+#
+
 # terminal emulator
 super + Return
 	st
@@ -5,6 +9,18 @@ super + Return
 # make sxhkd reload its configuration files
 super + Escape
 	pkill -USR1 -x sxhkd
+
+# help
+F1
+	st -e sh -c "bspc node -t floating && cat ~/.config/sxhkd/sxhkdrc | less" 
+
+# dmenu application launcher
+super + space
+	~/.config/launcher/launcher.sh
+
+#
+# BSPWM HOTKEYS
+#
 
 # quit/restart bspwm
 super + alt + {q,r}
@@ -42,10 +58,6 @@ super + {Left,Down,Up,Right}
 super + p 
 	bspc node -g sticky
 
-# help
-F1
-	st -e sh -c "bspc node -t floating && cat ~/.config/sxhkd/sxhkdrc | sed -r /^[[:blank:]]+/d .config/sxhkd/sxhkdrc | less" 
-
 # expand a window by moving one of its side outward
 super + alt + {Left,Down,Up,Right}
 	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
@@ -54,11 +66,18 @@ super + alt + {Left,Down,Up,Right}
 super + alt + shift + {Left,Down,Up,Right}
 	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
-# dmenu application launcher
-super + space
-	~/.config/launcher/launcher.sh
-
 # close and kill
 super + shift + q
 	bspc node -k
 
+# preselect the direction
+super + ctrl + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + ctrl + space
+	bspc node -p cancel

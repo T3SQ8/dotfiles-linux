@@ -18,3 +18,5 @@ _comp_options+=(globdots)               # Include hidden files.
  
 # Vim mode
 bindkey -v
+
+alias ls='ls --color=auto'

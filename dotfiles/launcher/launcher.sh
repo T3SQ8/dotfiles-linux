@@ -1,29 +1,32 @@
-option=$(echo "vim
-ranger
-settings" | dmenu)
+#!/bin/bash
 
-settingsfunc()
-{
-var1=$(echo "brightness
-screen-resolution" | dmenu)
+GUI=("keepassxc" "firefox")
+TERM=("vim" "ranger")
+SETTINGS=("brightness" "screen-resolution")
+
+settingsfunc() {
+var1=$(printf '%s\n' "${SETTINGS[@]}"| dmenu)
 }
 
-brightnessfunc()
-{
-xrandr --output $(xrandr -q | grep connected | head -n 1 | cut -d ' ' -f1) --brightness $(echo "set brightness to?: " | dmenu)
+brightnessfunc() {
+xrandr --output $(xrandr -q | grep connected | head -n 1 | cut -d ' ' -f1) --brightness $(? | dmenu -p "Set brightness to?:")
 }
 
-screenresfunc()
-{
-xrandr -s $(xrandr | sed s/\ \ \ // | awk '{print$1;}' | grep x | dmenu)
+screenresfunc() {
+xrandr -s $(xrandr | sed s/\ \ \ // | awk '{print$1;}' | grep x | dmenu -p "Set the screen resolution to?:")
 }
 
+choise=$(printf '%s\n' "${GUI[@]}" "${TERM[@]}" settings | dmenu)
 
-case "$option" in
-	GuiProgram) sh -c $option &;;
-	vim|ranger) st -e $option &;;
-	settings) settingsfunc ;;
-esac
+if [ "$choise" = settings ]; then
+	settingsfunc
+else
+	if [ "$(printf '%s\n' "${GUI[@]}" | grep "$choise")" = "$choise" ]; then
+		sh -c "$choise" &
+	else
+		st -e "$choise" &
+	fi
+fi
 
 case "$var1" in
 	brightness) brightnessfunc &;;

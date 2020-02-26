@@ -2,10 +2,9 @@
 
 sxhkd &
 
-bspc monitor VGA1 -d I II III IV V VI VII VIII IX X
-bspc monitor LVDS1 -d I II III IV V VI VII VIII IX X
+bspc monitor -d I II III IV V VI VII VIII IX X
 
-bspc config border_width         4
+bspc config border_width         3
 bspc config window_gap          12
 
 bspc config split_ratio          0.52
@@ -14,7 +13,7 @@ bspc config gapless_monocle      true
 
 # coloring
 bspc config normal_border_color  "#ffffff"
-bspc config focused_border_color "#268bd2"
+bspc config focused_border_color "#cb4b16"
 
 bspc rule -a Gimp desktop='^8' state=floating follow=on
 bspc rule -a Chromium desktop='^2'
@@ -26,7 +25,7 @@ bspc rule -a Screenkey manage=off
 xrandr -s 1920x1080
 
 # Pick a random picture from the given folder and set as wallpaper
-feh --bg-fill $(ls ~/.config/wallpaper/*.jpg | shuf -n 1)
+feh --bg-fill --no-fehbg $(ls ~/.config/wallpaper/*.jpg | shuf -n 1)
 
 # Start the panel script
-. ~/.config/panel/panel
+~/.config/panel/panel.sh | lemonbar -g x24 -f "-*-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
