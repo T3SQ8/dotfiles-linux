@@ -1,8 +1,14 @@
 #! /bin/sh
 
 sxhkd &
+bspc rule -r "*"
 
-bspc monitor -d I II III IV V VI VII VIII IX X
+mainmonitor="$(bspc query --monitors --names | grep -v LVDS | head -n 1)"
+
+if [ "$mainmonitor" != "LVDS*" ]; then
+	xrandr --output "$mainmonitor" --auto --output LVDS1 --off
+fi
+bspc monitor $mainmonitor -d I II III IV V VI VII VIII IX X
 
 bspc config border_width         2
 bspc config window_gap          12
@@ -21,11 +27,9 @@ bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 
-# Set screen resolution
-xrandr -s 1920x1080
-
 # Pick a random picture from the given folder and set as wallpaper
 feh --bg-fill --no-fehbg $(ls ~/.config/wallpaper/*.jpg | shuf -n 1)
 
+xsetroot -cursor_name left_ptr
 # Start the panel script
 ~/.config/panel/panel.sh | lemonbar -g x24 -f "-*-fixed-*-*-*-*-10-*-*-*-*-*-*-*" -B#073642 -F#eee8d5

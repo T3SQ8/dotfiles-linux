@@ -22,8 +22,14 @@ Internet() {
 	echo "INT: $CONNECTION"
 }
 
+# Define the desktop
+desktop() {
+	DESKTOP=$(bspc query -D -d focused --names)
+	echo "$DESKTOP"
+}
+
 # Print
 while true; do
-        echo "%{c}$(Clock)%{r}$(Internet) | $(Battery) "
+        echo "%{l} $(desktop) %{c}$(Clock)%{r}$(Internet) | $(Battery) "
         sleep 1
 done
