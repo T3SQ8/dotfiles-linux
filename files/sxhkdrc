@@ -15,7 +15,7 @@ F1
 	st -e sh -c "bspc node -t floating && cat ~/.config/sxhkd/sxhkdrc | less" 
 
 # dmenu application launcher
-@Super_R
+super + space
 	~/.config/launcher/launcher.sh
 
 #
