@@ -30,3 +30,5 @@ set mouse=a
 " Set the solarized theme
 colorscheme solarized
 set background=dark
+
+set smartindent
