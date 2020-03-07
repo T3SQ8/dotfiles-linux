@@ -1,8 +1,7 @@
-#!/bin/bash
+#!/bin/sh
 # Installing dependencies:
-# libx11-dev libx11-dev x11proto-dev for st.
-
-sudo apt install -y git xorg feh vim ranger lemonbar dmenu make gcc bspwm sxhkd libx11-dev libx11-dev x11proto-dev
+# libxft-dev libx11-dev x11proto-dev for st.
+sudo apt install -y git xorg feh vim ranger lemonbar dmenu make gcc bspwm sxhkd libx11-dev libxft-dev x11proto-dev
 
 # Cloning repositories
 mkdir -p ~/.config/ranger ~/.config/bspwm ~/.config/sxhkd
@@ -13,13 +12,28 @@ cd T3SQ8-st
 make && sudo make install
 
 # Dotfiles
-cd ../dotfiles
+cd ../files
 cp -r bspwmrc ~/.config/bspwm/bspwmrc
 cp -r panel ~/.config/
-cp -r profile ~/.profile
 cp -r rc.conf ~/.config/ranger/rc.conf
 cp -r sxhkdrc ~/.config/sxhkd/sxhkdrc 
 cp -r vim ~/.vim
 cp -r xinitrc ~/.xinitrc
-cp -r zshrc ~/.zshrc
 cp -r launcher ~/.config/
+
+# Configuring shell
+echo "Use BASH or ZSH?"
+echo "[1]: BASH"
+echo "[2]: ZSH"
+read -r shell
+case $shell in
+	1)
+		cp -r profile ~/.profile
+		;;
+	2)
+		cp -r profile ~/.zprofile
+		cp -r zshrc ~/.zshrc
+		sudo apt install zsh
+		chsh -s /bin/zsh
+		;;
+esac
