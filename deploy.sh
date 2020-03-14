@@ -1,10 +1,10 @@
 #!/bin/sh
 # Installing dependencies:
 # libxft-dev libx11-dev x11proto-dev for st.
-sudo apt install -y git xorg feh vim ranger lemonbar dmenu make gcc bspwm sxhkd libx11-dev libxft-dev x11proto-dev
+sudo apt install -y git xorg feh vim ranger lemonbar dmenu make gcc bspwm sxhkd libx11-dev libxft-dev x11proto-dev acpi
 
 # Cloning repositories
-mkdir -p ~/.config/ranger ~/.config/bspwm ~/.config/sxhkd
+mkdir -p ~/.config/ranger ~/.config/bspwm ~/.config/sxhkd ~/.config/zsh
 git clone https://github.com/T3SQ8/T3SQ8-st.git
 git clone https://github.com/T3SQ8/wallpaper.git
 cp -r wallpaper ~/.config/wallpaper
@@ -31,8 +31,8 @@ case $shell in
 		cp -r profile ~/.profile
 		;;
 	2)
-		cp -r profile ~/.zprofile
-		cp -r zshrc ~/.zshrc
+		cp -r zprofile ~/.zprofile
+		cp -r zshrc ~/.config/zsh/zshrc
 		sudo apt install zsh
 		chsh -s /bin/zsh
 		;;

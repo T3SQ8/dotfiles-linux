@@ -1,6 +1,6 @@
 #! /bin/sh
-
 sxhkd &
+
 bspc rule -r "*"
 
 mainmonitor="$(bspc query --monitors --names | grep -v LVDS | head -n 1)"
@@ -11,6 +11,7 @@ if [ "$mainmonitor" = "VGA1" ]; then
 else
 	bspc monitor -d 1 2 3 4 5 6 7 8 9 10
 fi
+bspc desktop -f 1
 
 bspc config border_width         2
 bspc config window_gap          12
@@ -29,11 +30,5 @@ bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 
-# Pick a random picture from the given folder and set as wallpaper
 feh --bg-fill --no-fehbg $(ls ~/.config/wallpaper/*.jpg | shuf -n 1)
-
-# Start the panel script
-~/.config/panel/panel.sh | lemonbar -g x24 -f "-*-fixed-*-*-*-*-10-*-*-*-*-*-*-*" -B#073642 -F#eee8d5
-
-# Set mouse
-xsetroot -cursor_name left_ptr
+~/.config/panel/panel.sh | lemonbar -g x24 -f "-*-fixed-*-*-*-*-10-*-*-*-*-*-*-*" -B#073642 -F#eee8d5 &

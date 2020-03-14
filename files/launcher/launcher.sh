@@ -1,11 +1,11 @@
 #!/bin/bash
 
-GUI=("keepassxc" "firefox")
-TERM=("vim" "ranger")
-SETTINGS=("brightness" "screen-resolution")
+Gui=("keepassxc" "firefox")
+Term=("vim" "ranger")
+Settings=("brightness" "screen-resolution")
 
 settingsfunc() {
-var1=$(printf '%s\n' "${SETTINGS[@]}"| dmenu)
+var1=$(printf '%s\n' "${Settings[@]}"| dmenu)
 }
 
 brightnessfunc() {
@@ -16,16 +16,14 @@ screenresfunc() {
 xrandr -s $(xrandr | sed s/\ \ \ // | awk '{print$1;}' | grep x | dmenu -p "Set the screen resolution to?:")
 }
 
-choise=$(printf '%s\n' "${GUI[@]}" "${TERM[@]}" settings | dmenu)
+Choise=$(printf '%s\n' "${Gui[@]}" "${Term[@]}" settings | dmenu)
 
-if [ "$choise" = settings ]; then
+if [ "$Choise" = settings ]; then
 	settingsfunc
+elif [ "$(printf '%s\n' "${Gui[@]}" | grep "$Choise")" = "$Choise" ]; then
+	sh -c "$Choise" &
 else
-	if [ "$(printf '%s\n' "${GUI[@]}" | grep "$choise")" = "$choise" ]; then
-		sh -c "$choise" &
-	else
-		st -e "$choise" &
-	fi
+	st -e "$Choise" &
 fi
 
 case "$var1" in

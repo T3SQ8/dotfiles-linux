@@ -1,35 +1,36 @@
-#!/usr/bin/bash
+#!/usr/bin/sh
 
 # Define the clock
 Clock() {
-        DATETIME=$(date "+%b %d %H:%M")
-        echo "$DATETIME"
+        date "+%b %d %H:%M"
 }
 
 # Define the battery
 Battery() {
-        BATPERC=$(acpi --battery | cut -d, -f2)
-        echo "BAT:$BATPERC"
+	echo "BAT:$(acpi --battery | cut -d, -f2)"
 }
 
 # Define the internet
 Internet() {
 	if [ "$(cat /sys/class/net/w*/operstate)" = up ]; then
-		CONNECTION="ON"
+		Connection="ON"
+	elif [ "$(cat /sys/class/net/e*/operstate)" = up ]; then
+		Connection="ON"
+	elif [ "$(cat /sys/class/net/v*/operstate)" = up ]; then
+		Connection="ON"
 	else
-		CONNECTION="OFF"
+		Connection="OFF"
 	fi
-	echo "INT: $CONNECTION"
+	echo "INT: $Connection"
 }
 
 # Define the desktop
-desktop() {
-	DESKTOP=$(bspc query -D -d focused --names)
-	echo "$DESKTOP"
+Desktop() {
+	bspc query -D -d focused --names
 }
 
 # Print
 while true; do
-        echo "%{l} $(desktop) %{c}$(Clock)%{r}$(Internet) | $(Battery) "
+        echo "%{l} $(Desktop) %{c}$(Clock)%{r}$(Internet) | $(Battery) "
         sleep 1
 done
