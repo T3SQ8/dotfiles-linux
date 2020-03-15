@@ -32,7 +32,7 @@ case $shell in
 		;;
 	2)
 		cp -r zprofile ~/.zprofile
-		cp -r zshrc ~/.config/zsh/zshrc
+		cp -r zshrc ~/.config/zsh/.zshrc
 		sudo apt install zsh
 		chsh -s /bin/zsh
 		;;
