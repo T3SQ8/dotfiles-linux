@@ -13,13 +13,12 @@ make && sudo make install
 
 # Dotfiles
 cd ../files
+cp -r bin  ~/.config/local/
 cp -r bspwmrc ~/.config/bspwm/bspwmrc
-cp -r panel ~/.config/
 cp -r rc.conf ~/.config/ranger/rc.conf
 cp -r sxhkdrc ~/.config/sxhkd/sxhkdrc 
 cp -r vim ~/.vim
 cp -r xinitrc ~/.xinitrc
-cp -r launcher ~/.config/
 
 # Configuring shell
 echo "Use BASH or ZSH?"

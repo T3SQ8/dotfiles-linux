@@ -19,6 +19,7 @@ _comp_options+=(globdots)               # Include hidden files.
 # Vim mode
 bindkey -v
 
+PATH=$PATH:$HOME/.local/bin
 alias ls='ls --color=auto'
 alias panel='~/.config/panel/panel.sh | lemonbar -g x24 -f "-*-fixed-*-*-*-*-10-*-*-*-*-*-*-*" -B#073642 -F#eee8d5'
 alias wallpaper='feh --bg-fill --no-fehbg $(ls ~/.config/wallpaper/*.jpg | shuf -n 1)'
