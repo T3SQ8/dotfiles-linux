@@ -4,7 +4,7 @@ SAVEHIST=1000
 HISTFILE=~/.cache/zsh/histfile
  
 autoload -U colors && colors
-PS1="%B%{$fg[green]%}%n@%M%{$reset_color%}:%{$fg[blue]%}%~%{$reset_color%}$ "
+PS1="%B%{$fg[green]%}%n@%M%{$reset_color%}:%B%{$fg[blue]%}%~%{$reset_color%}$ "
 
 # Basic auto/tab complete:
 autoload -U compinit
