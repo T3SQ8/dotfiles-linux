@@ -12,11 +12,11 @@ super + Escape
 
 # help
 F1
-	st -e sh -c "bspc node -t floating && cat ~/.config/sxhkd/sxhkdrc | less" 
+	helpsxhkd --new-window
 
 # dmenu application launcher
 super + space
-	~/.config/launcher/launcher.sh
+	tlauncher
 
 #
 # BSPWM HOTKEYS
