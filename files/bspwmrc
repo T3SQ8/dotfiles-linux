@@ -31,4 +31,4 @@ bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 
 chwallpaper
-lemonpanel | lemonbar -g x24 -u2 -U#268bd2 -f "-*-fixed-*-*-*-*-10-*-*-*-*-*-*-*" -B#073642 -F#eee8d5 &
+lemonpanel

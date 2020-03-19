@@ -29,8 +29,12 @@ Desktop() {
 	bspc query -D -d focused --names
 }
 
-# Print
-while true; do
-        echo "%{+u}%{l} $(Desktop) %{c}$(Clock)%{r}$(Internet) | $(Battery) "
-        sleep 1
-done
+# Print the result
+Result() {
+	while true; do
+		echo "%{+u}%{l} $(Desktop) %{c}$(Clock)%{r}$(Internet) | $(Battery) "
+		sleep 1
+	done
+}
+
+Result | lemonbar -g x24 -u2 -U#268bd2 -f "-*-fixed-*-*-*-*-10-*-*-*-*-*-*-*" -B#073642 -F#eee8d5 &
