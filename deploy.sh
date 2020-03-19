@@ -4,7 +4,7 @@
 sudo apt install -y git xorg feh vim ranger lemonbar dmenu make gcc bspwm sxhkd libx11-dev libxft-dev x11proto-dev acpi
 
 # Cloning repositories
-mkdir -p ~/.config/ranger ~/.config/bspwm ~/.config/sxhkd ~/.config/zsh
+mkdir -p ~/.config/ranger ~/.config/bspwm ~/.config/sxhkd ~/.config/zsh ~/.local
 git clone https://github.com/T3SQ8/T3SQ8-st.git
 git clone https://github.com/T3SQ8/wallpaper.git
 cp -r wallpaper ~/.config/wallpaper
