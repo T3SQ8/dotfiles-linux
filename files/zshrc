@@ -21,3 +21,4 @@ bindkey -v
 
 PATH=$PATH:$HOME/.local/bin
 alias ls='ls --color=auto'
+alias vim='nvim'
