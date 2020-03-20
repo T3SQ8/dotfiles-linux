@@ -21,12 +21,22 @@ super + space
 #################
 # BSPWM HOTKEYS #
 #################
-# WINDOWS #
-###########
+
+################
+# WINDOW FOCUS #
+################
 
 # toggle tiled and monocle layout
 super + f
 	bspc desktop -l next
+
+# focus on the next/previous node in the current desktop
+alt + {_,shift + }Tab
+	bspc node -f {next,prev}.local
+
+####################
+# MOVE/SWAP/RESIZE #
+####################
 
 # swap current node and biggest node
 super + g
@@ -36,11 +46,7 @@ super + g
 super + {t,shift + t,s}
 	bspc node -t {tiled,pseudo_tiled,floating}
 
-# focus on the next/previous node in the current desktop
-alt + {_,shift + }Tab
-	bspc node -f {next,prev}.local
-
-# move a floating window
+# move floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
@@ -48,11 +54,11 @@ super + {Left,Down,Up,Right}
 super + p 
 	bspc node -g sticky
 
-# expand a window
+# expand window
 super + alt + {Left,Down,Up,Right}
 	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
-# contract a window
+# contract window
 super + alt + shift + {Left,Down,Up,Right}
 	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
