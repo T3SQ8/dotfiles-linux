@@ -19,6 +19,7 @@ cp -r rc.conf ~/.config/ranger/rc.conf
 cp -r sxhkdrc ~/.config/sxhkd/sxhkdrc 
 cp -r nvim ~/.config/nvim
 cp -r xinitrc ~/.xinitrc
+cp -r newsboat ~/.config/newsboat
 
 # Configuring shell
 echo "Use BASH or ZSH?"
