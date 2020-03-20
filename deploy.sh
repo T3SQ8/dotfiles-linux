@@ -13,7 +13,7 @@ make && sudo make install
 
 # Dotfiles
 cd ../files
-cp -r bin  ~/.local/bin
+cp -r bin ~/.local/bin
 cp -r bspwmrc ~/.config/bspwm/bspwmrc
 cp -r rc.conf ~/.config/ranger/rc.conf
 cp -r sxhkdrc ~/.config/sxhkd/sxhkdrc 
