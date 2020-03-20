@@ -28,7 +28,7 @@ echo "[2]: ZSH"
 read -r shell
 case $shell in
 	1)
-		cp -r profile ~/.profile
+		cp -r zprofile ~/.profile
 		;;
 	2)
 		cp -r zprofile ~/.zprofile

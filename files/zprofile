@@ -1,5 +1,6 @@
 export ZDOTDIR=$HOME/.config/zsh
 export GIT_EDITOR=vim
+export PATH=$PATH:$HOME/.local/bin
 
 if [[ "$(tty)" = "/dev/tty1" ]]; then
 	startx &

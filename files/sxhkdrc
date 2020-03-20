@@ -16,7 +16,7 @@ super + F1
 
 # dmenu application launcher
 super + space
-	$HOME/.local/bin/tlauncher
+	tlauncher
 
 #################
 # BSPWM HOTKEYS #
