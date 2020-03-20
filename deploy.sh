@@ -1,7 +1,7 @@
 #!/bin/sh
 # Installing dependencies:
 # libxft-dev libx11-dev x11proto-dev for st.
-sudo apt install -y git xorg feh neovim ranger lemonbar dmenu make gcc bspwm sxhkd libx11-dev libxft-dev x11proto-dev acpi
+sudo apt install -y git xorg feh neovim ranger lemonbar dmenu make gcc bspwm sxhkd libx11-dev libxft-dev x11proto-dev acpi newsboat
 
 # Cloning repositories
 mkdir -p ~/.config/ranger ~/.config/bspwm ~/.config/sxhkd ~/.config/zsh ~/.local
