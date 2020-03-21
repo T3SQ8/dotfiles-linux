@@ -1,17 +1,44 @@
+" Plugins{{{
 call plug#begin('~/vimfiles/plugged')
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 call plug#end()
+"}}}
+
+" Functions{{{
+" Change font size
+let g:fontsize = ""
+function! Fontsize()
+	if exists('g:fontsize')
+		set guifont=Consolas:h18
+		unlet g:fontsize
+	else
+		set guifont=Consolas:h14
+		let g:fontsize = ""
+	endif
+endfunction
+
+" Change color scheme
+let g:background = ""
+function! Background()
+	if exists("g:background")
+		set background=light
+		unlet g:background
+	else
+		set background=dark
+		let g:background = ""
+	endif
+endfunction
+"}}}
+
+" Settings{{{
+" Color scheme
+colorscheme solarized8
+
+" Searching
+set hlsearch ignorecase incsearch
 
 " Font size
 set guifont=Consolas:h14
-nnoremap <s-F12> :set guifont=Consolas:h14<cr>
-nnoremap <F12> :set guifont=Consolas:h18<cr>
-
-" Searching
-set hlsearch ignorecase
-
-" Syntax highlighting
-syntax on
 
 " Line numbering
 set number relativenumber ruler
@@ -22,46 +49,46 @@ set wildmenu
 " Open splits at the bottom and right
 set splitbelow splitright
 
-" Colorscheme
-colorscheme solarized8
-map <f11> :set background=light<cr>
-map <s-f11> :set background=dark<cr>
-
 " Text wrapping
-set nowrap
-noremap <F5> :set nowrap!<cr>
+set wrap lbr
 
-" Standard movment with arrows. Moves by visual lines
-noremap <silent> <down> gj
-noremap <silent> <up> gk
-
-" Spellcheck
-map <F6> :setlocal spell! spelllang=en_us<CR>
-map <F7> :setlocal spell! spelllang=sv<CR>
-map <space> ]sz=
-map <s-space> [sz=
-
-" Allow backspacing over autoindent, line breaks and the start of insert
+" Allow backspacing over automatic indentation, line breaks and the start of insert
 set backspace=indent,eol,start
 
-" Copying and pasting to system cliboard
-vnoremap <c-c> "+y
-inoremap <c-v> <esc>"+pa
-nnoremap <c-a> ggVG
-
-" Template for using Latex in Markdown
-autocmd Filetype markdown inoremap ;1 <Esc>?^#<cr>yy<c-o>P$ciw<c-r>=<c-r>"+1<cr><down>$$<cr><cr><++><up><up><left>
-autocmd Filetype markdown inoremap ;2 <Esc>?^#<cr>yy<c-o>P$ciw<c-r>=<c-r>"+1<cr><cr>a) <cr>b) $<++>$<cr>c) $<++>$<cr><down><++><Esc>?^a)<cr>A$$<left>
-autocmd Filetype markdown inoremap <c-x> <Esc>/<++><cr>"_c4l
-
-" Disable the pageup and pagedown keys
-nnoremap <pageup> <nop>
-inoremap <pageup> <nop>
-nnoremap <pagedown> <nop>
-inoremap <pagedown> <nop>
-
-" Endable mouse for normal, visual and command-line modes
+" Enable mouse for normal, visual and command-line modes
 set mouse=nvc
 
 " Disable error sounds and flashing
 autocmd GUIEnter * set visualbell t_vb=
+
+" Folding
+set foldmethod=marker
+"}}}
+
+" Keybindings{{{
+nnoremap <F11> :echo Background()<cr>
+nnoremap <F12> :echo Fontsize()<cr>
+noremap <F5> :set nowrap!<cr>
+map <F6> :setlocal spell! spelllang=en_us<CR>
+map <F7> :setlocal spell! spelllang=sv<CR>
+map <space> ]sz=
+map <s-space> [sz=
+vnoremap <c-c> "+y
+inoremap <c-v> <esc>"+pa
+nnoremap <c-a> ggVG
+
+" Markdown
+autocmd Filetype markdown inoremap ;1 <Esc>?^#<cr>yy<c-o>P$ciw<c-r>=<c-r>"+1<cr><down>$$<cr><cr><++><up><up><left>
+autocmd Filetype markdown inoremap ;2 <Esc>?^#<cr>yy<c-o>P$ciw<c-r>=<c-r>"+1<cr><cr>a) <cr>b) $<++>$<cr>c) $<++>$<cr><down><++><Esc>?^a)<cr>A$$<left>
+autocmd Filetype markdown inoremap <c-x> <Esc>/<++><cr>"_c4l
+autocmd Filetype markdown noremap <silent> j gj
+autocmd Filetype markdown noremap <silent> k gk
+
+" Disable keys
+noremap <pageup> <nop>
+noremap <pagedown> <nop>
+noremap <up> <nop>
+noremap <down> <nop>
+noremap <left> <nop>
+noremap <right> <nop>
+"}}}

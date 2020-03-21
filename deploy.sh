@@ -4,7 +4,7 @@
 sudo apt install -y git xorg feh neovim ranger lemonbar dmenu make gcc bspwm sxhkd libx11-dev libxft-dev x11proto-dev acpi newsboat
 
 # Cloning repositories
-mkdir -p ~/.config/ranger ~/.config/bspwm ~/.config/sxhkd ~/.config/zsh ~/.local ~/.cache/zsh
+mkdir -p ~/.config/ranger ~/.config/bspwm ~/.config/sxhkd ~/.config/zsh ~/.local ~/.cache/zsh ~/.config/X11
 git clone https://github.com/T3SQ8/T3SQ8-st.git
 git clone https://github.com/T3SQ8/wallpaper.git
 cp -r wallpaper ~/.config/wallpaper
@@ -18,7 +18,7 @@ cp -r bspwmrc ~/.config/bspwm/bspwmrc
 cp -r rc.conf ~/.config/ranger/rc.conf
 cp -r sxhkdrc ~/.config/sxhkd/sxhkdrc 
 cp -r nvim ~/.config/nvim
-cp -r xinitrc ~/.xinitrc
+cp -r xinitrc ~/.config/X11/xinitrc
 cp -r newsboat ~/.config/newsboat
 
 # Configuring shell
