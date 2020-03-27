@@ -6,33 +6,44 @@ call plug#end()
 
 " Functions{{{
 " Change font size
-let g:fontsize = ""
 function! Fontsize()
-	if exists('g:fontsize')
+	if &guifont ==# "Consolas:h14"
+		set guifont=Consolas:h16
+	elseif &guifont ==# "Consolas:h16"
 		set guifont=Consolas:h18
-		unlet g:fontsize
 	else
 		set guifont=Consolas:h14
-		let g:fontsize = ""
 	endif
 endfunction
 
 " Change color scheme
-let g:background = ""
 function! Background()
-	if exists("g:background")
-		set background=light
-		unlet g:background
-	else
+	if &background == "light"
 		set background=dark
-		let g:background = ""
+	else
+		set background=light
 	endif
 endfunction
+
+" Compile Markdown
+function! Compilemarkdown()
+	set fileencoding=utf-8
+	write
+	!pandoc.exe % -o \%HOMEPATH\%\Desktop\tmp.docx
+	set fileencoding=latin1
+	write
+endfunction
+
 "}}}
 
 " Settings{{{
 " Color scheme
 colorscheme solarized8
+if strftime('%H') < 18 && strftime('%H') > 7
+	set background=light
+else
+	set background=dark
+endif
 
 " Searching
 set hlsearch ignorecase incsearch
@@ -40,8 +51,8 @@ set hlsearch ignorecase incsearch
 " Font size
 set guifont=Consolas:h14
 
-" Line numbering
-set number relativenumber ruler
+" Lines
+set number relativenumber ruler cursorline
 
 " Matches using command-line completion
 set wildmenu
@@ -50,9 +61,9 @@ set wildmenu
 set splitbelow splitright
 
 " Text wrapping
-set wrap lbr
+set nowrap
 
-" Allow backspacing over automatic indentation, line breaks and the start of insert
+" Allow backspacing over indentation, line breaks and the start of insert
 set backspace=indent,eol,start
 
 " Enable mouse for normal, visual and command-line modes
@@ -63,26 +74,33 @@ autocmd GUIEnter * set visualbell t_vb=
 
 " Folding
 set foldmethod=marker
+
+" Key timeout
+set notimeout
 "}}}
 
 " Keybindings{{{
-nnoremap <F11> :echo Background()<cr>
-nnoremap <F12> :echo Fontsize()<cr>
-noremap <F5> :set nowrap!<cr>
-map <F6> :setlocal spell! spelllang=en_us<CR>
-map <F7> :setlocal spell! spelllang=sv<CR>
-map <space> ]sz=
-map <s-space> [sz=
+let mapleader=" "
+nnoremap <leader>b :call Background()<cr>
+nnoremap <leader>f :call Fontsize()<cr>
+nnoremap <leader>w :set nowrap!<cr>
+nnoremap <leader>sv :setlocal spell! spelllang=en_us<CR>
+nnoremap <leader>en :setlocal spell! spelllang=sv<CR>
+" nnoremap <leader>r :source $MYVIMRC<cr>
+nnoremap <leader>n ]sz=
+nnoremap <leader>p [sz=
 vnoremap <c-c> "+y
-inoremap <c-v> <esc>"+pa
+inoremap <c-v> <esc>l"+Pa
 nnoremap <c-a> ggVG
 
 " Markdown
-autocmd Filetype markdown inoremap ;1 <Esc>?^#<cr>yy<c-o>P$ciw<c-r>=<c-r>"+1<cr><down>$$<cr><cr><++><up><up><left>
-autocmd Filetype markdown inoremap ;2 <Esc>?^#<cr>yy<c-o>P$ciw<c-r>=<c-r>"+1<cr><cr>a) <cr>b) $<++>$<cr>c) $<++>$<cr><down><++><Esc>?^a)<cr>A$$<left>
+" autocmd Filetype markdown inoremap ;1 <Esc>?^#<cr>yy<c-o>P$ciw<c-r>=<c-r>"+1<cr><down>$$<cr><cr><++><up><up><left>
+" autocmd Filetype markdown inoremap ;2 <Esc>?^#<cr>yy<c-o>P$ciw<c-r>=<c-r>"+1<cr><cr>a) <cr>b) $<++>$<cr>c) $<++>$<cr><down><++><Esc>?^a)<cr>A$$<left>
 autocmd Filetype markdown inoremap <c-x> <Esc>/<++><cr>"_c4l
 autocmd Filetype markdown noremap <silent> j gj
 autocmd Filetype markdown noremap <silent> k gk
+autocmd Filetype markdown noremap <leader>c :call Compilemarkdown()<cr>
+autocmd Filetype markdown set wrap linebreak
 
 " Disable keys
 noremap <pageup> <nop>
@@ -91,4 +109,7 @@ noremap <up> <nop>
 noremap <down> <nop>
 noremap <left> <nop>
 noremap <right> <nop>
+nnoremap <s-q> <nop>
+nnoremap <space> <nop>
+nnoremap q: <nop>
 "}}}
