@@ -2,7 +2,7 @@ export ZDOTDIR=$HOME/.config/zsh
 export GIT_EDITOR=vim
 export PATH=$PATH:$HOME/.local/bin
 export XINITRC=$HOME/.config/X11/xinitrc
-export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
+export XAUTHORITY=$HOME/.config/X11/Xauthority
 export LESSHISTFILE=-
 
 if [[ "$(tty)" = "/dev/tty1" ]]; then
